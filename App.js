@@ -8,7 +8,7 @@ import AppLoading from 'expo-app-loading';
 export default function App() {
   const [fontsLoaded]=useFonts({
     Jost_400Regular,Jost_600SemiBold
-  })
+  }) //co tinua
 
   if(!fontsLoaded){
     return <AppLoading/>
