@@ -1,15 +1,25 @@
 import React from 'react'
-import { View, Text, Image, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native'
+import { View,Dimensions, Text, Image,
+     TouchableOpacity, StyleSheet,
+     SafeAreaView } from 'react-native'
 import colors from '../styles/colors'
+import {Feather} from '@expo/vector-icons'
+
+const windowHeight=Dimensions.get('screen').height
 
 export default function Welcome() {
+
+
     return (
         <SafeAreaView style={styles.container} >
             <Text style={styles.title} >Manage your{'\n'} plants easily</Text>
-            <Image style={styles.image} source={require('../assets/watering.png')}/>
-            <Text style={styles.subtitle} >Don't forget to water your plants. We will remember you whener you need it.</Text>
+            <Image resizeMode="contain" style={styles.image}
+             source={require('../assets/watering.png')}/>
+            <Text style={styles.subtitle} >Don't forget to water your plants.
+            {'\n'} We will remember you whener you need it.</Text>
             <TouchableOpacity activeOpacity={0.7} style={styles.button} >
-                <Text style={styles.buttonText} >GO</Text>
+                {/* <Text style={styles.buttonText} >GO</Text> */}
+                <Feather name="chevron-right" style={styles.icon}/>
             </TouchableOpacity>
         </SafeAreaView>
     )
@@ -26,28 +36,33 @@ const styles=StyleSheet.create({
         fontWeight:'bold',
         textAlign:'center',
         color: colors.heading,
-        marginTop:38,
+        marginTop:58,
     },
     subtitle:{
         textAlign:'center',
         fontSize:18,
         paddingHorizontal:20,
         color: colors.heading,
+        marginBottom:70,
     },
     button:{
         backgroundColor:colors.green,
         borderRadius:16,
         justifyContent:'center',
         alignItems:'center',
-        marginBottom:10,
+        marginBottom:30,
         height: 56,
         width: 56,
     },
     image:{
         width: 292,
-        height: 284,
+        height: windowHeight*0.6,
     },
     buttonText:{
         color: colors.white,
-    },  
+    }, 
+    icon:{
+        fontSize:26,
+        color: colors.white,
+    }, 
 })
