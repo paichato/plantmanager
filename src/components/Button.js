@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import colors from '../styles/colors'
 import fonts from '../styles/fonts'
 
-export  function Button({text}) {
+export  function Button({text, ...rest}) {
     return (
-        <TouchableOpacity style={styles.container} >
+        <TouchableOpacity {...rest} style={styles.container} >
             <Text style={styles.text} >{text}</Text>
         </TouchableOpacity>
     )

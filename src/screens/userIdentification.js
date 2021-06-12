@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core'
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, SafeAreaView, TextInput, KeyboardAvoidingView, Platform } from 'react-native'
 import { Button } from '../components/Button'
@@ -9,6 +10,7 @@ export default function UserIdentification() {
     const [isFilled,setIsFilled]=useState(false);
     const [isFocused,setIsFocused]=useState(false);
     const [name,setName]=useState('');
+    const navigation=useNavigation();
 
     function handleInput(text){
         setName(text);
@@ -22,6 +24,10 @@ export default function UserIdentification() {
     function handleInputBlur(value){
         setIsFocused(false);
         setIsFilled(!!name);
+    }
+
+    function handleSubmit(){
+       (!!name) && navigation.navigate('Confirmation');
     }
 
     return (
@@ -48,7 +54,7 @@ export default function UserIdentification() {
                       onFocus={handleInputFocus}
                       />
                     <View style={styles.footer}>
-                        <Button text="Confirm" />
+                        <Button onPress={handleSubmit} text="Confirm" />
                     </View>
                    
                 </View>
