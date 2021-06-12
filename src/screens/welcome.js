@@ -8,7 +8,11 @@ import fonts from '../styles/fonts'
 
 const windowHeight=Dimensions.get('screen').height
 
-export default function Welcome() {
+export default function Welcome({navigation}) {
+
+    function handleStart(){
+        navigation.navigate('UserId');
+    }
 
 
     return (
@@ -22,8 +26,11 @@ export default function Welcome() {
             to water your plants.
             {'\n'} We will remember you whener{'\n'} you need it.
             </Text>
-            <TouchableOpacity activeOpacity={0.7} 
-            style={styles.button} >
+            <TouchableOpacity
+             activeOpacity={0.7} 
+            style={styles.button}
+            onPress={handleStart}
+            >
                
                 <Feather name="chevron-right" 
                 style={styles.icon}/>

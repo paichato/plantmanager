@@ -6,6 +6,7 @@ import {useFonts, Jost_400Regular,Jost_600SemiBold,Jost_700Bold} from '@expo-goo
 import AppLoading from 'expo-app-loading';
 import UserIdentification from './src/screens/userIdentification';
 import Confirmation from './src/screens/Confirmation';
+import Routes from './src/routes'
 
 export default function App() {
   const [fontsLoaded]=useFonts({
@@ -17,13 +18,14 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      {/* <Welcome/> */}
-      {/* <UserIdentification/> */}
-      <Confirmation/>
+    // <View style={styles.container}>
+    //   <StatusBar style="auto" />
+    //   {/* <Welcome/> */}
+    //   {/* <UserIdentification/> */}
+    //   <Confirmation/>
       
-    </View>
+    // </View>
+    <Routes/>
   );
 }
 

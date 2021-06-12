@@ -6,7 +6,7 @@ import Welcome from '../screens/welcome';
 import UserIdentification from '../screens/userIdentification';
 import Confirmation from '../screens/Confirmation';
 
-const StackRoutes=createStackNavigator();
+export const StackRoutes=createStackNavigator();
 
 export default function AppRoutes() {
     return (
