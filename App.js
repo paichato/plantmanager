@@ -2,12 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Welcome from './src/screens/welcome';
-import {useFonts, Jost_400Regular,Jost_600SemiBold} from '@expo-google-fonts/jost'
+import {useFonts, Jost_400Regular,Jost_600SemiBold,Jost_700Bold} from '@expo-google-fonts/jost'
 import AppLoading from 'expo-app-loading';
 
 export default function App() {
   const [fontsLoaded]=useFonts({
-    Jost_400Regular,Jost_600SemiBold
+    Jost_400Regular,Jost_600SemiBold,Jost_700Bold
   }) //co tinua
 
   if(!fontsLoaded){

@@ -4,6 +4,7 @@ import { View,Dimensions, Text, Image,
      SafeAreaView } from 'react-native'
 import colors from '../styles/colors'
 import {Feather} from '@expo/vector-icons'
+import fonts from '../styles/fonts'
 
 const windowHeight=Dimensions.get('screen').height
 
@@ -12,14 +13,19 @@ export default function Welcome() {
 
     return (
         <SafeAreaView style={styles.container} >
-            <Text style={styles.title} >Manage your{'\n'} plants easily</Text>
+            <Text style={styles.title} >
+                Manage your{'\n'} plants easily</Text>
             <Image resizeMode="contain" style={styles.image}
              source={require('../assets/watering.png')}/>
-            <Text style={styles.subtitle} >Don't forget to water your plants.
-            {'\n'} We will remember you whener you need it.</Text>
-            <TouchableOpacity activeOpacity={0.7} style={styles.button} >
-                {/* <Text style={styles.buttonText} >GO</Text> */}
-                <Feather name="chevron-right" style={styles.icon}/>
+            <Text style={styles.subtitle} >Don't forget 
+            to water your plants.
+            {'\n'} We will remember you whener you need it.
+            </Text>
+            <TouchableOpacity activeOpacity={0.7} 
+            style={styles.button} >
+               
+                <Feather name="chevron-right" 
+                style={styles.icon}/>
             </TouchableOpacity>
         </SafeAreaView>
     )
@@ -37,6 +43,8 @@ const styles=StyleSheet.create({
         textAlign:'center',
         color: colors.heading,
         marginTop:58,
+        fontFamily: fonts.heading,
+        lineHeight:38,
     },
     subtitle:{
         textAlign:'center',
@@ -44,6 +52,7 @@ const styles=StyleSheet.create({
         paddingHorizontal:20,
         color: colors.heading,
         marginBottom:70,
+        fontFamily: fonts.text,
     },
     button:{
         backgroundColor:colors.green,
