@@ -12,7 +12,7 @@ export default function UserIdentification() {
 
     function handleInput(text){
         setName(text);
-        setIsFilled(!!name);
+        setIsFilled(!!text);
     }
 
     function handleInputFocus(){
@@ -33,6 +33,7 @@ export default function UserIdentification() {
                 <View style={styles.form} >
                 <Text style={styles.emoji} >
                         {isFilled? '😁' : '😃'}
+                        {/* 😃 */}
                     </Text>
                     <Text style={styles.title} >
                         How can we call you?
