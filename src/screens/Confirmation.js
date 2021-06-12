@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { View, Text, SafeAreaView, StyleSheet } from 'react-native'
 import { Button } from '../components/Button'
@@ -9,18 +10,19 @@ export default function Confirmation() {
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
                 <Text style={styles.emoji}>
-                    😊✌
+                    🎍
                 </Text>
                 <Text style={styles.title}>
-                    Ready...
+                    Well done
                 </Text>
                 <Text style={styles.subtitle}>
-                    Now we are going to take care of your 
+                    Now we are going to take care of {'\n'}your 
                     plants with much care.
                 </Text>
-            </View>
-            <View style={styles.footer}>
-                <Button text="Confirm" />
+            
+                <View style={styles.footer}>
+                    <Button text="Confirm" />
+                </View>
             </View>
            
         </SafeAreaView>
@@ -35,6 +37,12 @@ const styles=StyleSheet.create({
 
     },
     content:{
+        flex: 1,
+        alignItems:'center',
+        justifyContent:'center',
+        // padding: 30,
+        width: '100%',
+        // padding: 30,
 
     },
     title:{
@@ -42,6 +50,8 @@ const styles=StyleSheet.create({
         fontFamily:fonts.heading,
         lineHeight:38,
         marginTop:15,
+        color: colors.heading,
+        textAlign:'center',
     },
     subtitle:{
         fontFamily:fonts.text,
@@ -51,11 +61,11 @@ const styles=StyleSheet.create({
         paddingVertical:20,
     },
     emoji:{
-        fontSize:32,
+        fontSize:78,
     },
     footer:{
-        width: '100%',
-        paddingHorizontal:75,
+        width: 200,
+        // paddingHorizontal:50,
     },
 
 })
