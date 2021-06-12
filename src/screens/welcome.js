@@ -13,13 +13,14 @@ export default function Welcome() {
 
     return (
         <SafeAreaView style={styles.container} >
+            <View style={styles.wrapper} >
             <Text style={styles.title} >
                 Manage your{'\n'} plants easily</Text>
             <Image resizeMode="contain" style={styles.image}
              source={require('../assets/watering.png')}/>
             <Text style={styles.subtitle} >Don't forget 
             to water your plants.
-            {'\n'} We will remember you whener you need it.
+            {'\n'} We will remember you whener{'\n'} you need it.
             </Text>
             <TouchableOpacity activeOpacity={0.7} 
             style={styles.button} >
@@ -27,6 +28,7 @@ export default function Welcome() {
                 <Feather name="chevron-right" 
                 style={styles.icon}/>
             </TouchableOpacity>
+            </View>
         </SafeAreaView>
     )
 }
@@ -34,15 +36,20 @@ export default function Welcome() {
 const styles=StyleSheet.create({
     container:{
         flex:1,
+        
+    },
+    wrapper:{
+        flex: 1,
         alignItems:'center',
         justifyContent:'space-around',
+        paddingHorizontal:20,
     },
     title:{
         fontSize:32,
-        fontWeight:'bold',
+        // fontWeight:'bold',
         textAlign:'center',
         color: colors.heading,
-        marginTop:58,
+        marginTop:'20%',
         fontFamily: fonts.heading,
         lineHeight:38,
     },
@@ -59,7 +66,7 @@ const styles=StyleSheet.create({
         borderRadius:16,
         justifyContent:'center',
         alignItems:'center',
-        marginBottom:30,
+        marginBottom:'10%',
         height: 56,
         width: 56,
     },
