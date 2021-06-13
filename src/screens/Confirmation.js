@@ -5,7 +5,12 @@ import { Button } from '../components/Button'
 import colors from '../styles/colors'
 import fonts from '../styles/fonts'
 
-export default function Confirmation() {
+export default function Confirmation({navigation}) {
+
+    function handleMoveOn(){
+        navigation.navigate('PlantSelect');
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
@@ -21,7 +26,7 @@ export default function Confirmation() {
                 </Text>
             
                 <View style={styles.footer}>
-                    <Button text="Confirm" />
+                    <Button onPress={handleMoveOn} text="Confirm" />
                 </View>
             </View>
            
