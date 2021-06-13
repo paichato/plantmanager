@@ -5,6 +5,7 @@ import colors from '../styles/colors';
 import Welcome from '../screens/welcome';
 import UserIdentification from '../screens/userIdentification';
 import Confirmation from '../screens/Confirmation';
+import PlantSelect from '../screens/PlantSelect';
 
 export const StackRoutes=createStackNavigator();
 
@@ -23,6 +24,8 @@ export default function AppRoutes() {
             name="UserId" component={UserIdentification}/>
             <StackRoutes.Screen 
             name="Confirmation" component={Confirmation}/>
+            <StackRoutes.Screen 
+            name="PlantSelect" component={PlantSelect}/>
 
             
 
