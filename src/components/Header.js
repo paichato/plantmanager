@@ -9,7 +9,7 @@ export  function Header() {
     return (
         <View style={styles.container}>
             <View>
-                <Text style={styles.greeting}>Ola,</Text>
+                <Text style={styles.greeting}>Hi,</Text>
                 <Text style={styles.userName}>Marlon</Text>
             </View>
             <Image style={styles.image} source={userImage}/>
