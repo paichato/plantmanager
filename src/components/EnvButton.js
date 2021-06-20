@@ -19,12 +19,13 @@ export default function EnvButton({ title, active = false, ...rest }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.shape,
-    width: 76,
+    minWidth: 76,
     height: 40,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 12,
     marginRight: 5,
+    padding: 5,
   },
   text: {
     color: colors.heading,

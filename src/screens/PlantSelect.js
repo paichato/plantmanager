@@ -17,21 +17,17 @@ export default function PlantSelect() {
   }, []);
 
   async function fetchEnvironment() {
-   
-
     const { data } = await api.get("plants_environments");
     setEnvironments([
       {
         key: "all",
-        title: "Todos",
+        title: "All",
       },
       ...data,
     ]);
   }
 
   async function fetchPlants() {
-   
-
     const { data } = await api.get("plants");
     setPlants(data);
   }
@@ -56,8 +52,11 @@ export default function PlantSelect() {
 
       <View>
         <FlatList
-          data={[1, 2, 3, 4, 5]}
-          renderItem={() => <PlantCardPrimary />}
+          data={plants}
+          renderItem={({ item }) => <PlantCardPrimary data={item} />}
+          showsVerticalScrollIndicator={false}
+          numColumns={2}
+          // contentContainerStyle={styles.plantsContainer}
         />
       </View>
     </View>
@@ -95,10 +94,10 @@ const styles = StyleSheet.create({
     marginLeft: 32,
     marginVertical: 32,
   },
-  plants:{
-    flex:1,
-    paddingHorizontal:32,
-    justifyContent:"center",
-     
+  plants: {
+    flex: 1,
+    paddingHorizontal: 32,
+    justifyContent: "center",
   },
+  plantsContainer: {},
 });
