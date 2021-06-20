@@ -7,8 +7,8 @@ import fonts from '../styles/fonts'
 
 export default function EnvButton({title, active=false,...rest}) {
     return (
-        <RectButton style={styles.container} {...rest}>
-            <Text style={styles.text} >{title}</Text>
+        <RectButton style={[styles.container,active && styles.containerActive]} {...rest}>
+            <Text style={[styles.text, active && styles.textActive]} >{title}</Text>
         </RectButton>
     )
 }
@@ -27,9 +27,12 @@ const styles=StyleSheet.create({
         fontFamily:fonts.text,
     },
     containerActive:{
-
+        // fontFamily:fonts.heading,
+        backgroundColor: colors.green_light,
+        // color: colors.green,
     },
     textActive:{
-
+        fontFamily:fonts.heading,
+        color: colors.green_dark,
     },
 })

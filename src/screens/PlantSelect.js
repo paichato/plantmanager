@@ -15,7 +15,7 @@ export default function PlantSelect() {
                 <Text style={styles.subtitle} >you will place your plant? </Text>
                 </View>
 
-                <EnvButton title="Cozinha"/>
+                <EnvButton title="Cozinha" active />
           
         </View>
     )
