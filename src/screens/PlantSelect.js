@@ -6,16 +6,19 @@ import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 import api from "../services/api";
 import { PlantCardPrimary } from "../components/PlantCardPrimary";
+import { Loader } from "../components/Loader";
 
 export default function PlantSelect() {
   const [environments, setEnvironments] = useState({});
   const [plants, setPlants] = useState({});
   const [envSelected, setEnvSelected] = useState("all");
   const [filteredPlants, setFilteredPlants] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchEnvironment();
     fetchPlants();
+    // setEnvSelected("all");
   }, []);
 
   async function fetchEnvironment() {
@@ -34,6 +37,8 @@ export default function PlantSelect() {
   async function fetchPlants() {
     const { data } = await api.get("plants?_sort=name&_order=asc");
     setPlants(data);
+    setFilteredPlants(plants);
+    setLoading(false);
   }
 
   function handleEnvSelected(key) {
@@ -45,6 +50,10 @@ export default function PlantSelect() {
 
     const filtered = plants.filter((plant) => plant.environments.includes(key));
     setFilteredPlants(filtered);
+  }
+
+  if (loading) {
+    return <Loader />;
   }
 
   return (
