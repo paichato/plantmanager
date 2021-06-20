@@ -5,25 +5,35 @@ import { Header } from "../components/Header";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 import api from "../services/api";
+import { PlantCardPrimary } from "../components/PlantCardPrimary";
 
 export default function PlantSelect() {
   const [environments, setEnvironments] = useState({});
+  const [plants, setPlants] = useState({});
 
   useEffect(() => {
     fetchEnvironment();
+    fetchPlants();
   }, []);
 
   async function fetchEnvironment() {
-    await api;
+   
 
     const { data } = await api.get("plants_environments");
     setEnvironments([
       {
-        key:'all',
-        title:'Todos'
+        key: "all",
+        title: "Todos",
       },
-      ...data
+      ...data,
     ]);
+  }
+
+  async function fetchPlants() {
+   
+
+    const { data } = await api.get("plants");
+    setPlants(data);
   }
 
   return (
@@ -41,6 +51,13 @@ export default function PlantSelect() {
           horizontal
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.envList}
+        />
+      </View>
+
+      <View>
+        <FlatList
+          data={[1, 2, 3, 4, 5]}
+          renderItem={() => <PlantCardPrimary />}
         />
       </View>
     </View>
@@ -77,5 +94,11 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     marginLeft: 32,
     marginVertical: 32,
+  },
+  plants:{
+    flex:1,
+    paddingHorizontal:32,
+    justifyContent:"center",
+     
   },
 });
