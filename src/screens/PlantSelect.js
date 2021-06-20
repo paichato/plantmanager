@@ -17,7 +17,9 @@ export default function PlantSelect() {
   }, []);
 
   async function fetchEnvironment() {
-    const { data } = await api.get("plants_environments");
+    const { data } = await api.get(
+      "plants_environments?_sort=title&_order=asc"
+    );
     setEnvironments([
       {
         key: "all",
@@ -51,6 +53,7 @@ export default function PlantSelect() {
       </View>
 
       <View>
+        {/* // style={styles.plantsContainer} */}
         <FlatList
           data={plants}
           renderItem={({ item }) => <PlantCardPrimary data={item} />}
@@ -68,6 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.background,
     marginTop: 20,
+    marginHorizontal: 30,
     // alignItems:'center',
     // justifyContent:'center',
   },
@@ -99,5 +103,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     justifyContent: "center",
   },
-  plantsContainer: {},
+  plantsContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
