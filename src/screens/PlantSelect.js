@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import EnvButton from '../components/EnvButton'
 import { Header } from '../components/Header'
 import colors from '../styles/colors'
 import fonts from '../styles/fonts'
@@ -13,6 +14,8 @@ export default function PlantSelect() {
                 <Text style={styles.title} >On wich environment</Text>
                 <Text style={styles.subtitle} >you will place your plant? </Text>
                 </View>
+
+                <EnvButton title="Cozinha"/>
           
         </View>
     )
