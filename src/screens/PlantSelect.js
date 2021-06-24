@@ -103,6 +103,7 @@ export default function PlantSelect() {
           // style={{ flex: 1 }}
           style={{width:'100%'}}
           data={environments}
+          keyExtractor={(item)=>item.key}
           renderItem={({ item }) => (
             <EnvButton
               title={item.title}
