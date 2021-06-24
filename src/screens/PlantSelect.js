@@ -24,7 +24,6 @@ export default function PlantSelect() {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [loadMore, setLoadMore] = useState(false);
-  const [loadedAll, setLoadedAll] = useState(false);
 
   useEffect(() => {
     fetchEnvironment();
@@ -98,12 +97,12 @@ export default function PlantSelect() {
         <Text style={styles.subtitle}>you will place your plant? </Text>
       </View>
 
-      <View style={{width:'100%'}} >
+      <View style={{ width: "100%" }}>
         <FlatList
           // style={{ flex: 1 }}
-          style={{width:'100%'}}
+          style={{ width: "100%" }}
           data={environments}
-          keyExtractor={(item)=>String(item.key)}
+          keyExtractor={(item) => String(item.key)}
           renderItem={({ item }) => (
             <EnvButton
               title={item.title}
@@ -122,7 +121,7 @@ export default function PlantSelect() {
         <FlatList
           style={{ flex: 1 }}
           data={filteredPlants}
-          keyExtractor={(item)=>String(item.id)}
+          keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => <PlantCardPrimary data={item} />}
           showsVerticalScrollIndicator={false}
           numColumns={2}
