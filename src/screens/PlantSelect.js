@@ -14,6 +14,7 @@ import api from "../services/api";
 import { PlantCardPrimary } from "../components/PlantCardPrimary";
 import { Loader } from "../components/Loader";
 import localServer from "../services/localServer";
+import { useNavigation } from "@react-navigation/native";
 // import { FlatList } from "react-native-gesture-handler";
 
 export default function PlantSelect() {
@@ -24,6 +25,7 @@ export default function PlantSelect() {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [loadMore, setLoadMore] = useState(false);
+  const navigation = useNavigation();
 
   useEffect(() => {
     fetchEnvironment();
@@ -89,6 +91,10 @@ export default function PlantSelect() {
     return <Loader />;
   }
 
+  function handlePlantSelect(plant) {
+    navigation.navigate("PlantSave");
+  }
+
   return (
     <View style={styles.container}>
       <Header />
@@ -122,7 +128,12 @@ export default function PlantSelect() {
           style={{ flex: 1 }}
           data={filteredPlants}
           keyExtractor={(item) => String(item.id)}
-          renderItem={({ item }) => <PlantCardPrimary data={item} />}
+          renderItem={({ item }) => (
+            <PlantCardPrimary
+              onPress={() => handlePlantSelect(item)}
+              data={item}
+            />
+          )}
           showsVerticalScrollIndicator={false}
           numColumns={2}
           alwaysBounceVertical

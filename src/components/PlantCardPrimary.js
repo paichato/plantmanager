@@ -7,7 +7,7 @@ import { SvgFromUri } from "react-native-svg";
 
 export function PlantCardPrimary({ data, ...rest }) {
   return (
-    <RectButton style={styles.container}>
+    <RectButton style={styles.container} {...rest}>
       <SvgFromUri width={70} height={70} uri={data.photo} />
       <Text style={styles.text}>{data.name}</Text>
     </RectButton>
