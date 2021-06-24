@@ -103,7 +103,7 @@ export default function PlantSelect() {
           // style={{ flex: 1 }}
           style={{width:'100%'}}
           data={environments}
-          keyExtractor={(item)=>item.key}
+          keyExtractor={(item)=>String(item.key)}
           renderItem={({ item }) => (
             <EnvButton
               title={item.title}
@@ -122,6 +122,7 @@ export default function PlantSelect() {
         <FlatList
           style={{ flex: 1 }}
           data={filteredPlants}
+          keyExtractor={(item)=>String(item.id)}
           renderItem={({ item }) => <PlantCardPrimary data={item} />}
           showsVerticalScrollIndicator={false}
           numColumns={2}
