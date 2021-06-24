@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { SvgFromUri } from "react-native-svg";
 import waterdrop from "../assets/waterdrop.png";
 import Button from "../components/Button";
+import colors from "../styles/colors";
 
 export default function PlantSave() {
   return (
@@ -32,5 +33,10 @@ export default function PlantSave() {
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+      flex:1,
+      justifyContent:"space-between",
+      backgroundColor:colors.shape,
+  },
+  
 });
