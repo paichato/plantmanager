@@ -17,7 +17,7 @@ import localServer from "../services/localServer";
 import { useNavigation } from "@react-navigation/native";
 // import { FlatList } from "react-native-gesture-handler";
 
-export default function PlantSelect() {
+export function PlantSelect() {
   const [environments, setEnvironments] = useState({});
   const [plants, setPlants] = useState({});
   const [envSelected, setEnvSelected] = useState("all");
@@ -130,7 +130,7 @@ export default function PlantSelect() {
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
             <PlantCardPrimary
-              onPress={() => handlePlantSelect(item)}
+              onPress={(item) => handlePlantSelect(item)}
               data={item}
             />
           )}

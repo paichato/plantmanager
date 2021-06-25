@@ -16,7 +16,7 @@ import { Button } from "../components/Button";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
-export default function UserIdentification() {
+export function UserIdentification() {
   const [isFilled, setIsFilled] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [name, setName] = useState("");

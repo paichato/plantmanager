@@ -2,10 +2,10 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { SvgFromUri } from "react-native-svg";
 import waterdrop from "../assets/waterdrop.png";
-import Button from "../components/Button";
+import { Button } from "../components/Button";
 import colors from "../styles/colors";
 
-export default function PlantSave() {
+export function PlantSave() {
   return (
     <View style={StyleSheet.container}>
       <View style={StyleSheet.plantInfo}>
