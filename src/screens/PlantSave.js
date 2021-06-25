@@ -1,28 +1,31 @@
-
 import { useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image, Platform } from "react-native";
+import { View, Text, StyleSheet, Image, Platform, Alert } from "react-native";
 import { SvgFromUri } from "react-native-svg";
 import waterdrop from "../assets/waterdrop.png";
 import { Button } from "../components/Button";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
-import DateTimePicker, {Event} from '@react-native-community/datetimepicker'
+import DateTimePicker, { Event } from "@react-native-community/datetimepicker";
 import { isBefore } from "date-fns";
 
 export function PlantSave() {
   const route = useRoute();
   const { plant } = route.params;
 
-  const [selectedDateTime,setSelectedDateTime]=useState(new Date());
-  const [showDatePicker,setShowDatePicker]=useState(Platform.OS==='ios');
+  const [selectedDateTime, setSelectedDateTime] = useState(new Date());
+  const [showDatePicker, setShowDatePicker] = useState(Platform.OS === "ios");
 
-  function handleChangeTime(event,dateTime){
-    if(Platform.OS==='android'){
-      setShowDatePicker(oldState=>!oldState)
+  function handleChangeTime(event, dateTime) {
+    if (Platform.OS === "android") {
+      setShowDatePicker((oldState) => !oldState);
     }
-    if(dateTime &&isBefore()){
-      
+    if (dateTime && isBefore(dateTime, new Date())) {
+      setSelectedDateTime(new Date());
+      return Alert.alert("Escolhauma hora no futuro");
+    }
+    if (dateTime) {
+      setSelectedDateTime(dateTime);
     }
   }
 
@@ -44,8 +47,12 @@ export function PlantSave() {
           Choose the best time be remembered
         </Text>
 
-        <DateTimePicker value={selectedDateTime} mode="time"
-         display="spinner" onChange={handleChangeTime}/>
+        <DateTimePicker
+          value={selectedDateTime}
+          mode="time"
+          display="spinner"
+          onChange={handleChangeTime}
+        />
 
         <Button text="Register plant" onPress={() => {}} />
       </View>
