@@ -92,7 +92,7 @@ export function PlantSelect() {
   }
 
   function handlePlantSelect(plant) {
-    navigation.navigate("PlantSave");
+    navigation.navigate("PlantSave", { plant });
   }
 
   return (
@@ -130,7 +130,7 @@ export function PlantSelect() {
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
             <PlantCardPrimary
-              onPress={(item) => handlePlantSelect(item)}
+              onPress={() => handlePlantSelect(item)}
               data={item}
             />
           )}
