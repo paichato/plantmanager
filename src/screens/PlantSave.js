@@ -1,20 +1,31 @@
 import { useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image, Platform, Alert } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Platform,
+  Alert,
+  TouchableOpacity,
+} from "react-native";
 import { SvgFromUri } from "react-native-svg";
 import waterdrop from "../assets/waterdrop.png";
 import { Button } from "../components/Button";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 import DateTimePicker, { Event } from "@react-native-community/datetimepicker";
-import { isBefore } from "date-fns";
+import { format, isBefore } from "date-fns";
+// import DatePicker from "react-native-date-picker";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export function PlantSave() {
   const route = useRoute();
   const { plant } = route.params;
 
   const [selectedDateTime, setSelectedDateTime] = useState(new Date());
-  const [showDatePicker, setShowDatePicker] = useState(Platform.OS === "ios");
+  const [showDatePicker, setShowDatePicker] = useState(false);
+  const [selected, setSelected] = useState(false);
 
   function handleChangeTime(event, dateTime) {
     if (Platform.OS === "android") {
@@ -26,7 +37,13 @@ export function PlantSave() {
     }
     if (dateTime) {
       setSelectedDateTime(dateTime);
+      setSelected(true);
     }
+  }
+
+  function handlePickerButton() {
+    setShowDatePicker(true);
+    // selected ? null : set
   }
 
   return (
@@ -43,16 +60,35 @@ export function PlantSave() {
           <Text style={styles.tipText}>{plant.water_tips}</Text>
         </View>
 
+        {showDatePicker && (
+          <DateTimePicker
+            value={selectedDateTime}
+            mode="time"
+            display="spinner"
+            is24Hour
+            onChange={handleChangeTime}
+          />
+        )}
+        <TouchableOpacity
+          style={selected ? styles.pickerButtonSelected : styles.pickerButton}
+          onPress={handlePickerButton}
+        >
+          <Text
+            style={
+              selected
+                ? styles.plantDescriptionSelected
+                : styles.plantDescription1
+            }
+          >
+            {selected
+              ? `Change ${format(selectedDateTime, "HH:mm")}`
+              : "Pick time"}
+          </Text>
+        </TouchableOpacity>
+
         <Text style={styles.alertLabel}>
           Choose the best time be remembered
         </Text>
-
-        <DateTimePicker
-          value={selectedDateTime}
-          mode="time"
-          display="spinner"
-          onChange={handleChangeTime}
-        />
 
         <Button text="Register plant" onPress={() => {}} />
       </View>
@@ -93,6 +129,20 @@ const styles = StyleSheet.create({
     fontSize: 17,
     marginTop: 10,
   },
+  plantDescription1: {
+    textAlign: "center",
+    fontFamily: fonts.text,
+    color: colors.heading,
+    fontSize: 17,
+    // marginTop: 10,
+  },
+  plantDescriptionSelected: {
+    textAlign: "center",
+    fontFamily: fonts.text,
+    color: colors.white,
+    fontSize: 17,
+    // marginTop: 10,
+  },
   tipContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -121,5 +171,27 @@ const styles = StyleSheet.create({
     color: colors.heading,
     fontSize: 12,
     marginBottom: 5,
+  },
+  pickerButton: {
+    height: 50,
+    width: "40%",
+    backgroundColor: colors.green_light,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    marginBottom: 20,
+    // opacity: ,
+  },
+  pickerButtonSelected: {
+    height: 50,
+    width: "40%",
+    backgroundColor: colors.green,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    marginBottom: 20,
+    // opacity: 1,
   },
 });
