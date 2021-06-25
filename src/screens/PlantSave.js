@@ -33,7 +33,7 @@ export function PlantSave() {
     }
     if (dateTime && isBefore(dateTime, new Date())) {
       setSelectedDateTime(new Date());
-      return Alert.alert("Escolhauma hora no futuro");
+      return Alert.alert("Escolha uma hora no futuro ⏰ ");
     }
     if (dateTime) {
       setSelectedDateTime(dateTime);
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   plantDescriptionSelected: {
     textAlign: "center",
     fontFamily: fonts.text,
-    color: colors.white,
+    color: colors.blue,
     fontSize: 17,
     // marginTop: 10,
   },
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
   pickerButtonSelected: {
     height: 50,
     width: "40%",
-    backgroundColor: colors.green,
+    backgroundColor: colors.blue_light,
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
