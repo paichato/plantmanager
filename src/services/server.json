@@ -15,8 +15,8 @@
     {
       "id": 1,
       "name": "Aningapara",
-      "about": "É uma espécie tropical que tem crescimento rápido e fácil manuseio.",
-      "water_tips": "Mantenha a terra sempre húmida sem encharcar. Regue 2 vezes na semana.",
+      "about": "It is a tropical species that is fast growing and easy to handle.",
+      "water_tips": "Always keep the soil moist without getting wet. Water twice a week.",
       "photo": "https://storage.googleapis.com/golden-wind/nextlevelweek/05-plantmanager/1.svg",
       "environments": ["living_room", "kitchen"],
       "frequency": {
@@ -27,8 +27,8 @@
     {
       "id": 2,
       "name": "Zamioculca",
-      "about": "Apesar de florescer na primavera, fica o ano todo bonita e verdinha. ",
-      "water_tips": "Utilize vasos com furos e pedras no fundo para facilitar a drenagem. Regue 1 vez no dia.",
+      "about": "Despite blooming in spring, it is beautiful and green all year round.",
+      "water_tips": "Use pots with holes and stones at the bottom to facilitate drainage. Water once a day.",
       "photo": "https://storage.googleapis.com/golden-wind/nextlevelweek/05-plantmanager/2.svg",
       "environments": ["living_room", "bedroom"],
       "frequency": {
@@ -39,8 +39,8 @@
     {
       "id": 3,
       "name": "Peperomia",
-      "about": "Adapta-se tanto ao sol e sombra, mas prefere ficar num cantinho fresco, sem sol direto. ",
-      "water_tips": "Nos dias mais quentes borrife água nas folhas. Regue 3 vezes na semana.",
+      "about": "Adapts both to sun and shade, but prefers to stay in a cool corner, without direct sun. ",
+      "water_tips": "On warmer days, spray the leaves with water. Water 3 times a week.",
       "photo": "https://storage.googleapis.com/golden-wind/nextlevelweek/05-plantmanager/3.svg",
       "environments": ["bedroom"],
       "frequency": {
@@ -51,8 +51,8 @@
     {
       "id": 4,
       "name": "Imbé",
-      "about": "De médio porte que se adapta a diversas regiões, além de ser bem fácil de cultivar. Conquista cada vez mais pessoas.",
-      "water_tips": "Mantenha a terra sempre húmida sem encharcar. Regue 2 vezes na semana.",
+      "about": "Medium-sized that adapts to different regions, in addition to being very easy to grow. It conquers more and more people.",
+      "water_tips": "Always keep the soil moist without getting wet. Water twice a week.",
       "photo": "https://storage.googleapis.com/golden-wind/nextlevelweek/05-plantmanager/4.svg",
       "environments": ["bedroom", "living_room"],
       "frequency": {
@@ -63,8 +63,8 @@
     {
       "id": 5,
       "name": "Espada São Jorge",
-      "about": "O aroma reduz os níveis de ansiedade e seu cheiro ajudar na qualidade do sono e a produtividade durante o dia.",
-      "water_tips": "Regue o solo ao redor. Regue 1 vez no dia.",
+      "about": "The aroma reduces anxiety levels and its scent helps with sleep quality and daytime productivity.",
+      "water_tips": "Water the surrounding soil. Water once a day.",
       "photo": "https://storage.googleapis.com/golden-wind/nextlevelweek/05-plantmanager/5.svg",
       "environments": ["bedroom", "living_room"],
       "frequency": {
@@ -75,8 +75,8 @@
     {
       "id": 6,
       "name": "Yucca",
-      "about": "São indicadas pois são fáceis de manter e cuidar. Você colocar em pequenos vasos, ou até mesmo em xícaras.",
-      "water_tips": "Graças à reserva de água dessas verdinhas, é sempre melhor regar pouco. Regue 1 vez na semana.",
+      "about": "They are recommended because they are easy to maintain and care for. You can put them in small vases, or even in cups.",
+      "water_tips": "Thanks to the water reserve of these greens, it is always better to water little. Water once a week.",
       "photo": "https://storage.googleapis.com/golden-wind/nextlevelweek/05-plantmanager/6.svg",
       "environments": ["kitchen", "bedroom"],
       "frequency": {
@@ -87,8 +87,8 @@
     {
       "id": 7,
       "name": "Frutíferas",
-      "about": "Exigem algumas horinhas de sol por dia, por isso deixe próximo a janelas.",
-      "water_tips": "Regue sempre na terra e não as folhas. Regue 3 vezes na semana",
+      "about": "They require a few hours of sunlight a day, so close to windows.",
+      "water_tips": "Always water the soil and not the leaves. Water 3 times a week",
       "photo": "https://storage.googleapis.com/golden-wind/nextlevelweek/05-plantmanager/7.svg",
       "environments": ["kitchen", "living_room"],
       "frequency": {
@@ -99,8 +99,8 @@
     {
       "id": 8,
       "name": "Orquídea",
-      "about": "Traz sensação de tranquilidade e paz ao ambiente. Requer pouca manutenção e ótima para quem tem pouco espaço.",
-      "water_tips": "Regue moderadamente. Reque 4 vezes na semana.",
+      "about": "It brings a feeling of tranquility and peace to the environment. Low maintenance and great for those with little space.",
+      "water_tips": "Water moderately. Apply 4 times a week.",
       "photo": "https://storage.googleapis.com/golden-wind/nextlevelweek/05-plantmanager/8.svg",
       "environments": ["bathroom"],
       "frequency": {
@@ -111,8 +111,8 @@
     {
       "id": 9,
       "name": "Violeta",
-      "about": "Com flores delicadas. Elas são ótimas sugestões para decorar o banheiro. ",
-      "water_tips": "Nada de molhar as flores e folhas. Regue o solo 2 vezes na semana.",
+      "about": "With delicate flowers. They are great suggestions for decorating the bathroom.",
+      "water_tips": "No watering the flowers and leaves. Water the soil twice a week.",
       "photo": "https://storage.googleapis.com/golden-wind/nextlevelweek/05-plantmanager/3.svg",
       "environments": ["bathroom"],
       "frequency": {
@@ -123,8 +123,8 @@
     {
       "id": 10,
       "name": "Hortênsia",
-      "about": "A hortênsia é uma planta rústica e se adapta a diferentes tipos de solos.",
-      "water_tips": "Mantenha a terra sempre húmida sem encharcar. Regue 1 vez no dia.",
+      "about": "Hydrangea is a rustic plant and adapts to different types of soils.",
+      "water_tips": "Always keep the soil moist without getting wet. Water once a day.",
       "photo": "https://storage.googleapis.com/golden-wind/nextlevelweek/05-plantmanager/2.svg",
       "environments": ["bathroom"],
       "frequency": {
