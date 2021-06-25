@@ -1,16 +1,30 @@
-import { Jost_200ExtraLight } from "@expo-google-fonts/jost";
+
 import { useRoute } from "@react-navigation/native";
-import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, Image, Platform } from "react-native";
 import { SvgFromUri } from "react-native-svg";
 import waterdrop from "../assets/waterdrop.png";
 import { Button } from "../components/Button";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
+import DateTimePicker, {Event} from '@react-native-community/datetimepicker'
+import { isBefore } from "date-fns";
 
 export function PlantSave() {
   const route = useRoute();
   const { plant } = route.params;
+
+  const [selectedDateTime,setSelectedDateTime]=useState(new Date());
+  const [showDatePicker,setShowDatePicker]=useState(Platform.OS==='ios');
+
+  function handleChangeTime(event,dateTime){
+    if(Platform.OS==='android'){
+      setShowDatePicker(oldState=>!oldState)
+    }
+    if(dateTime &&isBefore()){
+      
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -29,6 +43,9 @@ export function PlantSave() {
         <Text style={styles.alertLabel}>
           Choose the best time be remembered
         </Text>
+
+        <DateTimePicker value={selectedDateTime} mode="time"
+         display="spinner" onChange={handleChangeTime}/>
 
         <Button text="Register plant" onPress={() => {}} />
       </View>
