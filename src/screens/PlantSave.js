@@ -22,7 +22,7 @@ import { savePlant } from "../libs/storage";
 
 export function PlantSave() {
   const route = useRoute();
-  const navigation=useNavigation();
+  const navigation = useNavigation();
   const { plant } = route.params;
 
   const [selectedDateTime, setSelectedDateTime] = useState(new Date());
@@ -48,24 +48,23 @@ export function PlantSave() {
     // selected ? null : set
   }
 
-  async function handleSave(){
+  async function handleSave() {
     try {
-        await savePlant({
-          ...plant,
-          dateTimeNotification:selectedDateTime,
-        });
+      await savePlant({
+        ...plant,
+        dateTimeNotification: selectedDateTime,
+      });
 
-        navigation.navigate("Confirmation", {
-          title: "Well done",
-          subtitle:
-            "Now we are going to take care of \n your plants with much care.",
-          buttonTitle: "Confirm",
-          icon: "🎋",
-          nextScreen: "PlantSelect",
-        });
-
+      navigation.navigate("Confirmation", {
+        title: "Setup complete",
+        subtitle:
+          "Now we are going to rembember you \n to take care of  your plants \n with much care.",
+        buttonTitle: "Thank you ☺",
+        icon: "🤗",
+        nextScreen: "MyPlants",
+      });
     } catch (error) {
-        Alert.alert('Save was unsuccessfull 😭')
+      Alert.alert("Save was unsuccessfull 😭");
     }
   }
 
