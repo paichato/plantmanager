@@ -18,6 +18,7 @@ import DateTimePicker, { Event } from "@react-native-community/datetimepicker";
 import { format, isBefore } from "date-fns";
 // import DatePicker from "react-native-date-picker";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import { savePlant } from "../libs/storage";
 
 export function PlantSave() {
   const route = useRoute();
@@ -44,6 +45,18 @@ export function PlantSave() {
   function handlePickerButton() {
     setShowDatePicker(true);
     // selected ? null : set
+  }
+
+  async function handleSave(){
+    try {
+        await savePlant({
+          ...plant,
+          dateTimeNotification:selectedDateTime,
+        });
+
+    } catch (error) {
+        Alert.alert('Save was unsuccessfull 😭')
+    }
   }
 
   return (
@@ -90,7 +103,7 @@ export function PlantSave() {
           Choose the best time be remembered
         </Text>
 
-        <Button text="Register plant" onPress={() => {}} />
+        <Button text="Register plant" onPress={handleSave} />
       </View>
     </View>
   );
