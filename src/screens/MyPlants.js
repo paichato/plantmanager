@@ -8,6 +8,7 @@ import { loadPlants } from "../libs/storage";
 import { formatDistance } from "date-fns";
 import { enUS, pt } from "date-fns/locale";
 import fonts from "../styles/fonts";
+import { PlantCardSecondary } from "../components/PlantCardSecondary";
 
 export default function MyPlants() {
   const [myPlants, setMyPlants] = useState([]);
@@ -49,9 +50,7 @@ export default function MyPlants() {
         <FlatList
           data={myPlants}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => {
-            <Text>Elemento</Text>;
-          }}
+          renderItem={({ item }) => <PlantCardSecondary data={item} />}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ flex: 1 }}
         />

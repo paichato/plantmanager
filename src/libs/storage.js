@@ -49,6 +49,6 @@ export async function loadPlants() {
     return plantsSorted;
     // return plants;
   } catch (error) {
-    throw new Error(error);
+    throw new Error(error + "eu escrevi");
   }
 }
