@@ -43,7 +43,14 @@ export function UserIdentification() {
     if (!name) return null;
     try {
       await AsyncStorage.setItem("@plantmanager:user", name);
-      navigation.navigate("Confirmation");
+      navigation.navigate("Confirmation", {
+        title: "Well done",
+        subtitle:
+          "Now we are going to take care of \n your plants with much care.",
+        buttonTitle: "Confirm",
+        icon: "🎋",
+        nextScreen: "PlantSelect",
+      });
     } catch (error) {
       Alert.alert("It was not possible to save user name 😢");
     }

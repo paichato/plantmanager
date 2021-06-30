@@ -4,22 +4,22 @@ import { Button } from "../components/Button";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
-export function Confirmation({ navigation }) {
+export function Confirmation({ navigation, route }) {
+  const { title, subtitle, buttonTitle, icon, nextScreen } = route.params;
+
   function handleMoveOn() {
-    navigation.navigate("PlantSelect");
+    navigation.navigate(nextScreen);
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.emoji}>🎍</Text>
-        <Text style={styles.title}>Well done</Text>
-        <Text style={styles.subtitle}>
-          Now we are going to take care of {"\n"}your plants with much care.
-        </Text>
+        <Text style={styles.emoji}>{icon}</Text>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.subtitle}>{subtitle}</Text>
 
         <View style={styles.footer}>
-          <Button onPress={handleMoveOn} text="Confirm" />
+          <Button onPress={handleMoveOn} text={buttonTitle} />
         </View>
       </View>
     </SafeAreaView>

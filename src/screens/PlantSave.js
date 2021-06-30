@@ -1,4 +1,4 @@
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
 import {
   View,
@@ -22,6 +22,7 @@ import { savePlant } from "../libs/storage";
 
 export function PlantSave() {
   const route = useRoute();
+  const navigation=useNavigation();
   const { plant } = route.params;
 
   const [selectedDateTime, setSelectedDateTime] = useState(new Date());
@@ -52,6 +53,15 @@ export function PlantSave() {
         await savePlant({
           ...plant,
           dateTimeNotification:selectedDateTime,
+        });
+
+        navigation.navigate("Confirmation", {
+          title: "Well done",
+          subtitle:
+            "Now we are going to take care of \n your plants with much care.",
+          buttonTitle: "Confirm",
+          icon: "🎋",
+          nextScreen: "PlantSelect",
         });
 
     } catch (error) {
