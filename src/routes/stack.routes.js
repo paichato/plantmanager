@@ -8,6 +8,7 @@ import { Confirmation } from "../screens/Confirmation";
 import { PlantSelect } from "../screens/PlantSelect";
 import { PlantSave } from "../screens/PlantSave";
 import MyPlants from "../screens/MyPlants";
+import AuthRoutes from "./tab.routes";
 // import PlantSave from "../screens/PlantSave";
 
 export const StackRoutes = createStackNavigator();
@@ -25,9 +26,9 @@ export default function AppRoutes() {
       <StackRoutes.Screen name="Welcome" component={Welcome} />
       <StackRoutes.Screen name="UserId" component={UserIdentification} />
       <StackRoutes.Screen name="Confirmation" component={Confirmation} />
-      <StackRoutes.Screen name="PlantSelect" component={PlantSelect} />
+      <StackRoutes.Screen name="PlantSelect" component={AuthRoutes} />
       <StackRoutes.Screen name="PlantSave" component={PlantSave} />
-      <StackRoutes.Screen name="MyPlants" component={MyPlants} />
+      <StackRoutes.Screen name="MyPlants" component={AuthRoutes} />
     </StackRoutes.Navigator>
   );
 }
