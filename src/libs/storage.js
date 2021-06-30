@@ -29,8 +29,7 @@ export async function loadPlants() {
     const data = await AsyncStorage.getItem("@plantmanager:plants");
     const plants = data ? JSON.parse(data) : {};
 
-    const plantsSorted = {}
-      .keys(plants)
+    const plantsSorted = Object.keys(plants)
       .map((plant) => {
         return {
           ...plants[plant].data,

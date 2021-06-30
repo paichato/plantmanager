@@ -6,7 +6,8 @@ import waterdrop from "../assets/waterdrop.png";
 import { FlatList } from "react-native-gesture-handler";
 import { loadPlants } from "../libs/storage";
 import { formatDistance } from "date-fns";
-import { pt } from "date-fns/locale";
+import { enUS, pt } from "date-fns/locale";
+import fonts from "../styles/fonts";
 
 export default function MyPlants() {
   const [myPlants, setMyPlants] = useState([]);
@@ -21,13 +22,13 @@ export default function MyPlants() {
     const plantStored = await loadPlants();
 
     const nextTime = formatDistance(
-      new date(plantStored[0].dateTimeNotification).getTime(),
+      new Date(plantStored[0].dateTimeNotification).getTime(),
       new Date().getTime(),
-      { locale: pt }
+      { locale: enUS }
     );
 
     setNextWaterd(
-      `Do not forget to water the ${plantStored[0].name} at ${nextTime} o'clock`
+      `Do not forget to water the ${plantStored[0].name} closely at ${nextTime} o'clock`
     );
     setMyPlants(plantStored);
     setLoading(false);
@@ -39,7 +40,7 @@ export default function MyPlants() {
 
       <View style={styles.spotlight}>
         <Image source={waterdrop} style={styles.spotlightImage} />
-        <Text style={styles.spotlightText}>{nextTime}</Text>
+        <Text style={styles.spotlightText}>{nextWaterd}</Text>
       </View>
 
       <View style={styles.plants}>
@@ -67,5 +68,34 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingTop: 50,
     backgroundColor: colors.background,
+  },
+  spotlight: {
+    backgroundColor: colors.blue_light,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    height: 110,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  spotlightImage: {
+    width: 60,
+    height: 60,
+  },
+  spotlightText: {
+    flex: 1,
+    color: colors.blue,
+    paddingHorizontal: 20,
+    textAlign: "justify",
+  },
+  plants: {
+    flex: 1,
+    width: "100%",
+  },
+  plantsTitle: {
+    fontSize: 24,
+    fontFamily: fonts.heading,
+    color: colors.heading,
+    marginVertical: 20,
   },
 });
