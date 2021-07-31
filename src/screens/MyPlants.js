@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Alert } from "react-native";
 import { Header } from "../components/Header";
 import colors from "../styles/colors";
 import waterdrop from "../assets/waterdrop.png";
@@ -10,6 +10,7 @@ import { enUS, pt } from "date-fns/locale";
 import fonts from "../styles/fonts";
 import { PlantCardSecondary } from "../components/PlantCardSecondary";
 import { Loader } from "../components/Loader";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function MyPlants() {
   const [myPlants, setMyPlants] = useState([]);
@@ -35,6 +36,37 @@ export default function MyPlants() {
     setMyPlants(plantStored);
     setLoading(false);
   }
+  const handleRemove = (plant) => {
+    Alert.alert("Remove", `Are you willing to remove ${plant.name}`, [
+      {
+        text: "Nao 🙌",
+        style: "cancel",
+      },
+      {
+        text: "Sim 😢",
+        onPress: async () => {
+          try {
+            const data = await AsyncStorage.getItem("@plantmanager:plants");
+            const plants = data ? JSON.parse(data) : {};
+            delete plants[plants.id];
+
+            await AsyncStorage.setItem(
+              "@plantmanager:plants",
+              JSON.stringify(plants)
+            );
+
+            setMyPlants((oldData) =>
+              oldData.filter((item) => item.id !== plant.id)
+            );
+          } catch (error) {
+            Alert.alert(
+              "It was not possible to remove plant. Try again" + error
+            );
+          }
+        },
+      },
+    ]);
+  };
 
   if (loading) {
     return <Loader />;
@@ -55,7 +87,12 @@ export default function MyPlants() {
         <FlatList
           data={myPlants}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <PlantCardSecondary data={item} />}
+          renderItem={({ item }) => (
+            <PlantCardSecondary
+              handleRemove={() => handleRemove(item)}
+              data={item}
+            />
+          )}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ flex: 1 }}
         />
