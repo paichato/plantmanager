@@ -9,6 +9,7 @@ import { formatDistance } from "date-fns";
 import { enUS, pt } from "date-fns/locale";
 import fonts from "../styles/fonts";
 import { PlantCardSecondary } from "../components/PlantCardSecondary";
+import { Loader } from "../components/Loader";
 
 export default function MyPlants() {
   const [myPlants, setMyPlants] = useState([]);
@@ -33,6 +34,10 @@ export default function MyPlants() {
     );
     setMyPlants(plantStored);
     setLoading(false);
+  }
+
+  if (loading) {
+    return <Loader />;
   }
 
   return (
