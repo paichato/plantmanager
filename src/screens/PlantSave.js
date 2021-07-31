@@ -8,6 +8,7 @@ import {
   Platform,
   Alert,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { SvgFromUri } from "react-native-svg";
 import waterdrop from "../assets/waterdrop.png";
@@ -69,52 +70,57 @@ export function PlantSave() {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.plantInfo}>
-        <SvgFromUri uri={plant.photo} height={150} width={150} />
-        <Text style={styles.plantName}>{plant.name}</Text>
-        <Text style={styles.plantDescription}>{plant.about}</Text>
-      </View>
-
-      <View style={styles.controller}>
-        <View style={styles.tipContainer}>
-          <Image source={waterdrop} style={styles.tipImage} />
-          <Text style={styles.tipText}>{plant.water_tips}</Text>
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={styles.container}
+    >
+      <View style={styles.container}>
+        <View style={styles.plantInfo}>
+          <SvgFromUri uri={plant.photo} height={150} width={150} />
+          <Text style={styles.plantName}>{plant.name}</Text>
+          <Text style={styles.plantDescription}>{plant.about}</Text>
         </View>
 
-        {showDatePicker && (
-          <DateTimePicker
-            value={selectedDateTime}
-            mode="time"
-            display="spinner"
-            is24Hour
-            onChange={handleChangeTime}
-          />
-        )}
-        <TouchableOpacity
-          style={selected ? styles.pickerButtonSelected : styles.pickerButton}
-          onPress={handlePickerButton}
-        >
-          <Text
-            style={
-              selected
-                ? styles.plantDescriptionSelected
-                : styles.plantDescription1
-            }
+        <View style={styles.controller}>
+          <View style={styles.tipContainer}>
+            <Image source={waterdrop} style={styles.tipImage} />
+            <Text style={styles.tipText}>{plant.water_tips}</Text>
+          </View>
+
+          {showDatePicker && (
+            <DateTimePicker
+              value={selectedDateTime}
+              mode="time"
+              display="spinner"
+              is24Hour
+              onChange={handleChangeTime}
+            />
+          )}
+          <TouchableOpacity
+            style={selected ? styles.pickerButtonSelected : styles.pickerButton}
+            onPress={handlePickerButton}
           >
-            {selected
-              ? `Change ${format(selectedDateTime, "HH:mm")}`
-              : "Pick time"}
+            <Text
+              style={
+                selected
+                  ? styles.plantDescriptionSelected
+                  : styles.plantDescription1
+              }
+            >
+              {selected
+                ? `Change ${format(selectedDateTime, "HH:mm")}`
+                : "Pick time"}
+            </Text>
+          </TouchableOpacity>
+
+          <Text style={styles.alertLabel}>
+            Choose the best time be remembered
           </Text>
-        </TouchableOpacity>
 
-        <Text style={styles.alertLabel}>
-          Choose the best time be remembered
-        </Text>
-
-        <Button text="Register plant" onPress={handleSave} />
+          <Button text="Register plant" onPress={handleSave} />
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
