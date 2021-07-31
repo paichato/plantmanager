@@ -1,21 +1,51 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Animated,
+} from "react-native";
 import { RectButton } from "react-native-gesture-handler";
+import Swipeable from "react-native-gesture-handler/Swipeable";
+
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 import { SvgFromUri } from "react-native-svg";
+import { Feather } from "@expo/vector-icons";
 
-export function PlantCardSecondary({ data, ...rest }) {
+// handleRemove = () => {};
+
+export function PlantCardSecondary({ data, handleRemove, ...rest }) {
   return (
-    <RectButton style={styles.container} {...rest}>
-      <SvgFromUri width={50} height={50} uri={data.photo} />
+    <Swipeable
+      overshootRight={false}
+      renderRightActions={() => {
+        return (
+          <Animated.View>
+            <View>
+              <TouchableOpacity
+                style={styles.buttonRemove}
+                onPress={handleRemove}
+              >
+                <Feather name="trash" size={32} color={colors.white} />
+              </TouchableOpacity>
+            </View>
+          </Animated.View>
+        );
+      }}
+    >
+      <RectButton style={styles.container} {...rest}>
+        <SvgFromUri width={50} height={50} uri={data.photo} />
 
-      <Text style={styles.title}>{data.name}</Text>
-      <View style={styles.details}>
-        <Text style={styles.timeLabel}>Water at</Text>
-        <Text style={styles.time}>{data.hour}</Text>
-      </View>
-    </RectButton>
+        <Text style={styles.title}>{data.name}</Text>
+        <View style={styles.details}>
+          <Text style={styles.timeLabel}>Water at</Text>
+          <Text style={styles.time}>{data.hour}</Text>
+        </View>
+      </RectButton>
+    </Swipeable>
   );
 }
 
@@ -51,5 +81,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: fonts.heading,
     color: colors.body_light,
+  },
+  buttonRemove: {
+    width: 100,
+    height: 85,
+    backgroundColor: colors.red,
+    marginTop: 15,
+    borderRadius: 20,
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
+    right: 10,
+    paddingLeft: 15,
   },
 });
