@@ -18,8 +18,8 @@ import { useNavigation } from "@react-navigation/native";
 // import { FlatList } from "react-native-gesture-handler";
 
 export function PlantSelect() {
-  const [environments, setEnvironments] = useState({});
-  const [plants, setPlants] = useState({});
+  const [environments, setEnvironments] = useState([]);
+  const [plants, setPlants] = useState([]);
   const [envSelected, setEnvSelected] = useState("all");
   const [filteredPlants, setFilteredPlants] = useState({});
   const [loading, setLoading] = useState(true);
@@ -30,39 +30,79 @@ export function PlantSelect() {
   useEffect(() => {
     fetchEnvironment();
     fetchPlants();
-    // setEnvSelected("all");
+    setEnvSelected("all");
   }, []);
 
   async function fetchEnvironment() {
-    const { data } = await api.get(
-      "plants_environments?_sort=title&_order=asc"
-    );
-    // const {data}=localServer.plants_environments;
+//     const { data } = await api.get(
+//       // "plants_environments?_sort=title&_order=asc"
+//       "/plants_environments"
+//     );
+//     // const {data}=localServer.plants_environments;
+// if(data){
+//   setEnvironments([
+//     {
+//       key: "all",
+//       title: "All",
+//     },
+//     ...data,
+//   ]);
+// }
 
-    setEnvironments([
-      {
-        key: "all",
-        title: "All",
-      },
-      ...data,
-    ]);
+api.get('/plants_environments').then((res)=>{
+  // console.log(res.data);
+  setEnvironments([
+    {
+      key: "all",
+      title: "All",
+    },
+    ...res.data,
+  ]);
+}).catch((err)=>{
+  console.log(err);
+})
+    
+    // console.log(JSON.stringify(environments));
+    // console.log(plants);
   }
 
   async function fetchPlants() {
-    const { data } = await api.get(
-      `plants?_sort=name&_order=asc&_page=${page}&_limit=8`
-    );
+    // const { data } = await api.get(
+    //   // `plants?_sort=name&_order=asc&_page=${page}&_limit=8`
+    //   `plants?_page=${page}&_limit=8`
+    // );
+    
 
-    if (!data) return setLoading(true);
+    // if (!data) return setLoading(true);
+
+    // if (page > 1) {
+    //   setPlants((oldValue) => [...oldValue, ...data]);
+    //   setFilteredPlants((oldValue) => [...oldValue, ...data]);
+    // } else {
+    //   setPlants(data);
+    //   setFilteredPlants(plants);
+    //   console.log(filteredPlants);
+    // }
+
+    // setLoading(false);
+    // setLoadMore(false);
+
+
+    api.get(`plants?_page=${page}&_limit=8`).then((res)=>{
+
+    if (!res.data) return setLoading(true);
 
     if (page > 1) {
-      setPlants((oldValue) => [...oldValue, ...data]);
-      setFilteredPlants((oldValue) => [...oldValue, ...data]);
+      setPlants((oldValue) => [...oldValue, ...res.data.results]);
+      setFilteredPlants((oldValue) => [...oldValue, ...res.data.results]);
     } else {
-      setPlants(data);
+      setPlants([...res.data.results]);
       setFilteredPlants(plants);
+      console.log(res.data.results);
     }
-
+    }).catch((err) => {
+      console.log(err);
+    });
     setLoading(false);
     setLoadMore(false);
   }
@@ -73,9 +113,11 @@ export function PlantSelect() {
     if (key === "all") {
       return setFilteredPlants(plants);
     }
-
+    console.log(typeof(plants));
     const filtered = plants.filter((plant) => plant.environments.includes(key));
     setFilteredPlants(filtered);
+
+    console.log(filteredPlants);
   }
 
   function handleFetchMore(distance) {

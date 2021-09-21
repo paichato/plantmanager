@@ -29,7 +29,7 @@ export default function MyPlants() {
     );
 
     setNextWaterd(
-      `Do not forget to water the ${plantStored[0].name} closely at ${nextTime} o'clock`
+      `Do not forget to water the ${plantStored[0].name} closely at ${String(nextTime)} o'clock`
     );
     setMyPlants(plantStored);
     setLoading(false);
