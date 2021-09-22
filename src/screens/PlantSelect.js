@@ -20,8 +20,8 @@ import { useNavigation } from "@react-navigation/native";
 export function PlantSelect() {
   const [environments, setEnvironments] = useState([]);
   const [plants, setPlants] = useState([]);
-  const [envSelected, setEnvSelected] = useState("all");
-  const [filteredPlants, setFilteredPlants] = useState({});
+  const [envSelected, setEnvSelected] = useState('');
+  const [filteredPlants, setFilteredPlants] = useState(plants);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [loadMore, setLoadMore] = useState(false);
@@ -29,9 +29,17 @@ export function PlantSelect() {
 
   useEffect(() => {
     fetchEnvironment();
+    // setEnvSelected("all");
     fetchPlants();
-    setEnvSelected("all");
+
+   
+   
+    
   }, []);
+
+  useEffect(() => {
+    if (envSelected==='' && plants) handleEnvSelected('all');
+  },[plants])
 
   async function fetchEnvironment() {
 //     const { data } = await api.get(
@@ -97,7 +105,7 @@ api.get('/plants_environments').then((res)=>{
       setFilteredPlants((oldValue) => [...oldValue, ...res.data.results]);
     } else {
       setPlants([...res.data.results]);
-      setFilteredPlants(plants);
+      setFilteredPlants([...res.data.results]);
       console.log(res.data.results);
     }
     }).catch((err) => {
@@ -116,8 +124,8 @@ api.get('/plants_environments').then((res)=>{
     console.log(typeof(plants));
     const filtered = plants.filter((plant) => plant.environments.includes(key));
     setFilteredPlants(filtered);
-
-    console.log(filteredPlants);
+    // return filteredPlants;
+    // console.log(filteredPlants);
   }
 
   function handleFetchMore(distance) {
@@ -166,9 +174,10 @@ api.get('/plants_environments').then((res)=>{
 
       <View style={{ height: "100%", flex: 1 }}>
         {/* // style={styles.plantsContainer} */}
+        {filteredPlants &&
         <FlatList
           style={{ flex: 1 }}
-          data={filteredPlants}
+          data={ filteredPlants}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
             <PlantCardPrimary
@@ -191,7 +200,7 @@ api.get('/plants_environments').then((res)=>{
             )
           }
           // contentContainerStyle={styles.plantsContainer}
-        />
+        /> }
       </View>
     </View>
   );
