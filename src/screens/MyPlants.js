@@ -48,11 +48,12 @@ export default function MyPlants() {
         <Text style={styles.plantsTitle}>Next water</Text>
 
         <FlatList
+        style={{ flex: 1 }}
           data={myPlants}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <PlantCardSecondary data={item} />}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ flex: 1 }}
+          // contentContainerStyle={{height:'100%'}}
         />
       </View>
     </View>
