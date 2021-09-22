@@ -28,6 +28,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": ""
+    "description": "This a app that helps helps you manage your plants by knowing when what its environment,  how many times you have to water(per week daily), and set a reminder has a push notificaation to remind you to water your plants. ",
+    "githubUrl": "https://github.com/paichato/plantmanager"
   }
 }
