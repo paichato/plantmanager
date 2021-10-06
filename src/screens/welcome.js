@@ -11,6 +11,7 @@ import {
 import colors from "../styles/colors";
 import { Feather } from "@expo/vector-icons";
 import fonts from "../styles/fonts";
+import api from "../services/api";
 
 const windowHeight = Dimensions.get("screen").height;
 
@@ -18,6 +19,18 @@ export function Welcome({ navigation }) {
   function handleStart() {
     navigation.navigate("UserId");
   }
+
+  const prefetch=async()=>{
+    api.get(`plants?_page=${page}&_limit=8`).then((res)=>{
+console.log(res.data);
+    }).catch((err)=>{
+console.log(err);
+    })
+  }
+
+  useEffect(() => {
+    prefetch();
+  },[])
 
   return (
     <SafeAreaView style={styles.container}>
