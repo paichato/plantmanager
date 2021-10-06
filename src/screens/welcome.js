@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   Dimensions,
@@ -21,7 +21,7 @@ export function Welcome({ navigation }) {
   }
 
   const prefetch=async()=>{
-    api.get(`plants?_page=${page}&_limit=8`).then((res)=>{
+    api.get(`plants?_page=${1}&_limit=8`).then((res)=>{
 console.log(res.data);
     }).catch((err)=>{
 console.log(err);
