@@ -103,16 +103,20 @@ api.get('/plants_environments').then((res)=>{
     if (page > 1) {
       setPlants((oldValue) => [...oldValue, ...res.data.results]);
       setFilteredPlants((oldValue) => [...oldValue, ...res.data.results]);
+      setLoading(false);
+      setLoadMore(false);
     } else {
       setPlants([...res.data.results]);
       setFilteredPlants([...res.data.results]);
       console.log(res.data.results);
+      setLoading(false);
+      
     }
     }).catch((err) => {
       console.log(err);
     });
-    setLoading(false);
-    setLoadMore(false);
+    
+    
   }
 
   function handleEnvSelected(key) {
