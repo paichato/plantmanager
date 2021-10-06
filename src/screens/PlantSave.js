@@ -66,6 +66,8 @@ export function PlantSave() {
       });
     } catch (error) {
       Alert.alert("Save was unsuccessfull 😭");
+      // console.log(JSON.stringify(error));
+      console.log(error);
     }
   }
 

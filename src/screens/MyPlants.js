@@ -4,7 +4,7 @@ import { Header } from "../components/Header";
 import colors from "../styles/colors";
 import waterdrop from "../assets/waterdrop.png";
 import { FlatList } from "react-native-gesture-handler";
-import { loadPlants } from "../libs/storage";
+import { loadPlants, removePlant } from "../libs/storage";
 import { formatDistance } from "date-fns";
 import { enUS, pt } from "date-fns/locale";
 import fonts from "../styles/fonts";
@@ -39,22 +39,15 @@ export default function MyPlants() {
   const handleRemove = (plant) => {
     Alert.alert("Remove", `Are you willing to remove ${plant.name}`, [
       {
-        text: "Nao 🙌",
+        text: "No 🙌",
         style: "cancel",
       },
       {
-        text: "Sim 😢",
+        text: "Yes 😢",
         onPress: async () => {
           try {
-            const data = await AsyncStorage.getItem("@plantmanager:plants");
-            const plants = data ? JSON.parse(data) : {};
-            delete plants[plants.id];
-
-            await AsyncStorage.setItem(
-              "@plantmanager:plants",
-              JSON.stringify(plants)
-            );
-
+            
+            await removePlant(plant.id)
             setMyPlants((oldData) =>
               oldData.filter((item) => item.id !== plant.id)
             );

@@ -12,18 +12,19 @@ export async function savePlant(plant) {
     if(repeat_every ==='week'){
       const interval=Math.trunc(7/times,1);
       nextTime.setDate(now.getDate()+interval);
-    }else{
-      nextTime.setDate(nextTime.getDate()+1);
     }
+    // else{
+    //   nextTime.setDate(nextTime.getDate()+1);
+    // }
 
-    const seconds=Math.abs(Math.ceil(now.getTime()-nextTime.getTime()/1000));
+    const seconds=Math.abs(Math.ceil(now.getTime()-nextTime.getTime())/1000);
 
     //notifications start here
     const notificationId=await Notifications.scheduleNotificationAsync({
       content:{
         title:'heeey 🪴',
         body:`It's take to take care of your plant ${plant.name}`,
-        sound,
+        sound:true,
         priority:Notifications.AndroidNotificationPriority.HIGH,
         data:{
           plant
@@ -31,6 +32,7 @@ export async function savePlant(plant) {
       },
       trigger:{
         seconds:seconds <60 ?60 :seconds,
+        // seconds:60,
         repeats:true
       }
     })
@@ -41,6 +43,7 @@ export async function savePlant(plant) {
     const newPlant = {
       [plant.id]: {
         data: plant,
+        notificationId:notificationId,
       },
     };
 
@@ -83,4 +86,18 @@ export async function loadPlants() {
   } catch (error) {
     throw new Error(error + "eu escrevi");
   }
+}
+
+export async function removePlant(id){
+  const data = await AsyncStorage.getItem("@plantmanager:plants");
+            const plants = data ? JSON.parse(data) : {};
+
+            await Notifications.cancelAllScheduledNotificationsAsync(plants[id].notificationId)
+
+            delete plants[id];
+
+            await AsyncStorage.setItem(
+              "@plantmanager:plants",
+              JSON.stringify(plants)
+            );
 }
