@@ -10,7 +10,7 @@
 
 
 ---------
-![gif](https://github.com/paichato/shlink-oficial/blob/main/resources/shlink-gif.gif)
+![gif](https://github.com/paichato/plantmanager/blob/main/passets/plantgif.gif)
 ------
 # Plant Manager 💻
 plant manager is an app that helps helps you manage your plants by knowing when what its environment, how many times you have to water(per week daily), and set a reminder has a push notificaation to remind you to water your plants..</br> </br>
@@ -28,11 +28,12 @@ This project was developed with the following technologies
 
 ## What the app looks like/ Aparencia da aplicacao 🙈
 
- ![banner](https://github.com/paichato/plantmanager/blob/main/passets/onboard.png)
-  ![banner](https://github.com/paichato/plantmanager/blob/main/passets/homescreen.png)
-   ![banner](https://github.com/paichato/plantmanager/blob/main/passets/plantselect.png)
-   ![banner](https://github.com/paichato/plantmanager/blob/main/passets/myplants.png)
-
+-  -  -  - 
+ ![banner](https://github.com/paichato/plantmanager/blob/main/passets/onboard.png) |
+  ![banner](https://github.com/paichato/plantmanager/blob/main/passets/homescreen.png) |
+   ![banner](https://github.com/paichato/plantmanager/blob/main/passets/plantselect.png) |
+   ![banner](https://github.com/paichato/plantmanager/blob/main/passets/myplants.png) |
+- - - -
 
 
 --- 
@@ -48,13 +49,11 @@ This project was developed with the following technologies
 
 
 ## How to explore / Como explorar a app 🔀
-1. Type your your link with the 'http'/'https' prefix. Example: https://github.com/paichato
-2. Press 'Generate Link' button
-3. Press on the link to copy link or press on the share icon to share link
-4. Press on the hamburguer icon to open the drawer
-5. Choose My Links to see your saved links
-6. Swipe left on your link to show the option to delete link
-7. Press on on link to show link 
+1. Type your name
+2. Pick a plant to add to your list
+3. Pick a time that you want to be reminded
+4. Let the magic happen
+
 <br/><br/>
 
 
