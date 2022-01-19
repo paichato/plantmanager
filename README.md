@@ -5,7 +5,7 @@
 ![languages](https://img.shields.io/badge/react%20native-expo41.0-blue)
 
 
-### <a href="#visual">Preview👀</a> | <a href="#htrun">How to run🔧</a> | <a href="#dep">Dependencies➕</a> | <a href="#feat">Features🌟</a> | [LIVE-DEMO](https://moveit-next-iymomt6wm-paichato.vercel.app/)🚀</br>
+### <a href="#visual">Preview👀</a> | <a href="#htrun">How to run🔧</a> | <a href="#dep">Dependencies➕</a> | <a href="#feat">Features🌟</a> | [LIVE-DEMO](https://expo.dev/@paichato/plantmanager)🚀</br>
 
 
 
